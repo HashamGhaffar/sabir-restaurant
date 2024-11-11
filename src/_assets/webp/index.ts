@@ -1,6 +1,6 @@
 // slider images start
 import Wrap from "./slider/wrap.webp";
-import Fries from "./slider/fries.webp";
+import FrenchFries from "./slider/frenchFries.webp";
 import SmashBurger from "./slider/smashBurger.webp";
 import ChickenBruger from "./slider/chickenBruger.webp";
 import Shake from "./slider/shake.webp";
@@ -20,7 +20,7 @@ import SmashBurgerFries from "./smashBurgerFries.webp";
 const webp = {
   // slider begain
   ChickenBruger,
-  Fries,
+  FrenchFries,
   Shake,
   SmashBurger,
   Wrap,

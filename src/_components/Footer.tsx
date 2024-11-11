@@ -3,12 +3,16 @@ import svgs from "@/_assets/svgs";
 import { fonts, colors } from "@/app/utils/themes";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+// import { useEffect, useState } from "react";
 
 interface FooterProps {
   applyBorderTop?: boolean;
 }
 
 const Footer = ({ applyBorderTop = true }: FooterProps) => {
+  const router = useRouter();
+
   const headingStyles = {
     fontSize: fonts.headingSecondary,
     lineHeight: fonts.headingSecondary,
@@ -22,6 +26,14 @@ const Footer = ({ applyBorderTop = true }: FooterProps) => {
     textTransform: "capitalize",
     fontSize: fonts.tertiaryTypography,
     lineHeight: fonts.tertiaryTypography,
+    cursor: "pointer",
+    transition:
+      "color 0.4s ease-in-out, text-shadow 0.6s ease-in-out , scale .3s ease-in-out",
+    "&:hover": {
+      color: colors.primaryRed,
+      textShadow: `1px 3px 4px ${colors.smokeGray}`,
+      scale: "1.1",
+    },
   };
 
   return (
@@ -90,10 +102,12 @@ const Footer = ({ applyBorderTop = true }: FooterProps) => {
                 }}
               >
                 <Image
+                  onClick={() => router.push("home")}
                   style={{
                     height: "100%",
                     width: "100%",
                     objectFit: "contain",
+                    cursor: "pointer",
                   }}
                   src={svgs.Logo}
                   alt="logo"
@@ -124,9 +138,24 @@ const Footer = ({ applyBorderTop = true }: FooterProps) => {
                     flexWrap: "wrap",
                   }}
                 >
-                  <Typography sx={{ ...textStyles }}>Home</Typography>
-                  <Typography sx={{ ...textStyles }}>About Us</Typography>
-                  <Typography sx={{ ...textStyles }}>Our Food</Typography>
+                  <Typography
+                    sx={{ ...textStyles }}
+                    onClick={() => router.push("home")}
+                  >
+                    Home
+                  </Typography>
+                  <Typography
+                    onClick={() => router.push("about-us")}
+                    sx={{ ...textStyles }}
+                  >
+                    About Us
+                  </Typography>
+                  <Typography
+                    sx={{ ...textStyles }}
+                    onClick={() => router.push("our-food")}
+                  >
+                    Our Food
+                  </Typography>
                   <Typography sx={{ ...textStyles }}>Order</Typography>
                   <Typography sx={{ ...textStyles }}>Contact</Typography>
                 </Box>

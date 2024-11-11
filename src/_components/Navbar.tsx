@@ -30,7 +30,12 @@ const Navbar = () => {
     cursor: "pointer",
     textTransform: "capitalize",
     transition:
-      "color 0.3s ease-in, background-color 0.5s ease-in, text-shadow 0.6s ease-in",
+      "color 0.4s ease-in-out, text-shadow 0.6s ease-in-out , scale .3s ease-in-out  ",
+    "&:hover": {
+      color: colors.primaryRed,
+      textShadow: `1px 3px 4px ${colors.smokeGray}`,
+      scale: "1.1",
+    },
   };
 
   return (
@@ -63,6 +68,7 @@ const Navbar = () => {
         >
           {/* Logo */}
           <Box
+            onClick={() => router.push("home")}
             sx={{
               width: "100%",
               maxWidth: { xs: "114px", xl: "150px" },
@@ -70,7 +76,7 @@ const Navbar = () => {
             }}
           >
             <Image
-              style={{ width: "100%", height: "100%" }}
+              style={{ width: "100%", height: "100%", cursor: "pointer" }}
               src={svgs.Logo}
               alt="Picture of the author"
             />
@@ -85,50 +91,24 @@ const Navbar = () => {
             }}
           >
             <Typography
-              sx={{
-                ...textStyle,
-                "&:hover": {
-                  color: colors.primaryRed,
-                  textShadow: "3px 3px 4px rgba(255, 255, 255, 0.5)",
-                },
-              }}
+              onClick={() => router.push("home")}
+              sx={{ ...textStyle }}
             >
               home
             </Typography>
             <Typography
-              sx={{
-                ...textStyle,
-                "&:hover": {
-                  color: colors.primaryRed,
-                  textShadow: "3px 3px 4px rgba(255, 255, 255, 0.5)",
-                },
-              }}
+              onClick={() => router.push("about-us")}
+              sx={{ ...textStyle }}
             >
               about us
             </Typography>
             <Typography
-              sx={{
-                ...textStyle,
-                "&:hover": {
-                  color: colors.primaryRed,
-                  textShadow: "3px 3px 4px rgba(255, 255, 255, 0.5)",
-                },
-              }}
+              onClick={() => router.push("our-food")}
+              sx={{ ...textStyle }}
             >
               Our Food
             </Typography>
-            <Typography
-              onClick={() => router.push("/contactUs")}
-              sx={{
-                ...textStyle,
-                "&:hover": {
-                  color: colors.primaryRed,
-                  textShadow: "3px 3px 4px rgba(255, 255, 255, 0.5)",
-                },
-              }}
-            >
-              contact us
-            </Typography>
+            <Typography sx={{ ...textStyle }}>contact us</Typography>
             {/* order dropdown  */}
             <Box
               sx={{
@@ -141,15 +121,7 @@ const Navbar = () => {
               <Typography
                 onMouseEnter={toggleDropdown}
                 onClick={() => router.push("/order")}
-                sx={{
-                  ...textStyle,
-                  display: "inline-flex",
-                  alignItems: "center",
-                  "&:hover": {
-                    color: colors.primaryRed,
-                    textShadow: "3px 3px 4px rgba(255, 255, 255, 0.5)",
-                  },
-                }}
+                sx={{ ...textStyle }}
               >
                 order
                 <ArrowDropDownIcon
@@ -157,7 +129,7 @@ const Navbar = () => {
                     marginLeft: "4px",
                     fontSize: "20px",
                     color: colors.primaryRed,
-                  }} // Set to #851A1D
+                  }}
                 />
               </Typography>
 
@@ -177,6 +149,8 @@ const Navbar = () => {
                   sx={{
                     ...textStyle,
                     padding: "20px 25px",
+                    transition:
+                      "color 0.4s ease-in-out, background-color 0.6s ease-in-out",
                     "&:hover": {
                       color: colors.White,
                       backgroundColor: colors.primaryRed,
@@ -190,6 +164,8 @@ const Navbar = () => {
                   sx={{
                     ...textStyle,
                     padding: "20px 25px",
+                    transition:
+                      "color 0.4s ease-in-out, background-color 0.6s ease-in-out",
                     "&:hover": {
                       color: colors.White,
                       backgroundColor: colors.primaryRed,

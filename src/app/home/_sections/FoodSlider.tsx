@@ -1,7 +1,6 @@
 "use client";
-
 import { useState, useEffect, useRef } from "react";
-import webp from "@/_assets/webp";
+import webp from "@/_assets/webp/index";
 import { Box, Typography } from "@mui/material";
 import Image, { StaticImageData } from "next/image";
 import "slick-carousel/slick/slick.css";
@@ -22,7 +21,7 @@ const foodItems: FoodCardProps[] = [
 
   {
     title: "French fries",
-    image: webp.Fries,
+    image: webp.FrenchFries,
   },
   {
     title: "smash Burger",
@@ -43,7 +42,7 @@ const foodItems: FoodCardProps[] = [
 
   {
     title: "French fries",
-    image: webp.Fries,
+    image: webp.FrenchFries,
   },
   {
     title: "smash Burger",
@@ -159,6 +158,12 @@ export default function FoodSlider() {
 }
 
 export const FoodCard = ({ title, image }: FoodCardProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleHover = () => {
+    setIsHovered((prev) => !prev);
+  };
+
   return (
     <Box
       sx={{
@@ -168,6 +173,8 @@ export const FoodCard = ({ title, image }: FoodCardProps) => {
       }}
     >
       <Box
+        onMouseOver={handleHover}
+        onMouseOut={handleHover}
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -183,14 +190,13 @@ export const FoodCard = ({ title, image }: FoodCardProps) => {
             height: { xs: "100px", sm: "120px", md: "140px", lg: "180px" },
             maxWidth: { xs: "120px", sm: "140px", md: "160px", lg: "200px" },
             width: "100%",
-            transition: "filter 0.5s ease-in , transform 0.5s ease-in",
-            "&:hover": {
-              WebkitFilter: "grayscale(100%)",
-              filter:
-                "grayscale(100%) drop-shadow(0 4px 10px rgba(50, 50, 50, 0.7))",
-              zIndex: "1000",
-              position: "relative",
-            },
+            transition: "filter 0.4s ease, transform 0.3s ease-in",
+            WebkitFilter: isHovered ? "grayscale(100%)" : "none",
+            filter: isHovered
+              ? "grayscale(100%) drop-shadow(0 4px 10px rgba(50, 50, 50, 0.7))"
+              : "none",
+            zIndex: isHovered ? 1000 : "auto",
+            position: isHovered ? "relative" : "static",
           }}
         >
           <Image
@@ -209,15 +215,13 @@ export const FoodCard = ({ title, image }: FoodCardProps) => {
           sx={{
             fontSize: fonts.primaryTypography,
             fontWeight: "600",
-            color: colors.White,
-            backgroundColor: colors.primaryRed,
             padding: "0 7px",
             textTransform: "upperCase",
-            transition: "background-color 1.2s ease, color 0.2s ease-in",
-            "&:hover": {
-              backgroundColor: colors.black,
-              color: colors.secondaryYellow,
-            },
+            transition: "background-color 0.4s ease-in-out, color 0.4s ease-in",
+            color: isHovered ? colors.primaryRed : colors.White,
+            backgroundColor: isHovered
+              ? colors.secondaryYellow
+              : colors.primaryRed,
           }}
         >
           {title}
