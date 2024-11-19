@@ -1,5 +1,6 @@
 import Logo from "./logo.svg";
 import Hamburger from "./hamburger.svg";
+import HamburgerWhite from "./hamburgerWhite.svg";
 import Search from "./search.svg";
 import Facebook from "./facebook.svg";
 import FacebookWhite from "./facebookWhite.svg";
@@ -16,6 +17,7 @@ import Location from "./location.svg";
 const svgs = {
   Logo,
   Hamburger,
+  HamburgerWhite,
   Search,
   Facebook,
   FacebookWhite,

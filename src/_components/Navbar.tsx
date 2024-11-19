@@ -19,8 +19,11 @@ const Navbar = () => {
 
   // dropdown code
   const [open, setOpen] = useState(false);
-  const toggleDropdown = () => {
-    setOpen(!open);
+  const openDropdown = () => {
+    setOpen(true);
+  };
+  const closeDropdown = () => {
+    setOpen(false);
   };
 
   const textStyle = {
@@ -111,27 +114,32 @@ const Navbar = () => {
             <Typography sx={{ ...textStyle }}>contact us</Typography>
             {/* order dropdown  */}
             <Box
+              onMouseLeave={closeDropdown}
               sx={{
                 position: "relative",
                 display: "inline-block",
                 width: "auto",
               }}
-              onMouseLeave={toggleDropdown}
             >
-              <Typography
-                onMouseEnter={toggleDropdown}
-                onClick={() => router.push("/order")}
-                sx={{ ...textStyle }}
+              <Box
+                onMouseEnter={openDropdown}
+                sx={{ display: "flex", alignItems: "center" }}
               >
-                order
+                <Typography
+                  onClick={() => router.push("order")}
+                  sx={{ ...textStyle }}
+                >
+                  order
+                </Typography>
                 <ArrowDropDownIcon
                   sx={{
                     marginLeft: "4px",
+                    paddingTop: "-12px",
                     fontSize: "20px",
                     color: colors.primaryRed,
                   }}
                 />
-              </Typography>
+              </Box>
 
               <Box
                 sx={{
@@ -245,7 +253,7 @@ const Navbar = () => {
               style={{ width: "100%", height: "100%" }}
               src={svgs.Hamburger}
               alt="Hamburger"
-              onClick={toggleSidebar} // Toggle sidebar on hamburger click
+              onClick={toggleSidebar}
             />
           </Box>
         </Box>
@@ -270,15 +278,36 @@ const Navbar = () => {
       >
         <Box
           sx={{
+            margin: { xs: "20px 20px 0 0", sm: "20px 30px 0  0 " },
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "center",
+          }}
+        >
+          <Image
+            style={{ width: "30px", height: "42.5px", objectFit: "contain" }}
+            src={svgs.HamburgerWhite}
+            alt="Hamburger"
+            onClick={toggleSidebar}
+          />
+        </Box>
+        <Box
+          sx={{
             display: "flex",
             flexDirection: "column",
             padding: "20px",
             gap: "10px",
-            marginTop: "20px",
             alignItems: "flex-end",
           }}
         >
+          <Divider
+            sx={{
+              width: "100%",
+              backgroundColor: colors.White,
+            }}
+          />
           <Typography
+            onClick={() => router.push("home")}
             variant="h6"
             sx={{
               ...textStyle,
@@ -294,6 +323,7 @@ const Navbar = () => {
             }}
           />
           <Typography
+            onClick={() => router.push("about-us")}
             variant="h6"
             sx={{
               ...textStyle,
@@ -309,6 +339,7 @@ const Navbar = () => {
             }}
           />
           <Typography
+            onClick={() => router.push("our-food")}
             variant="h6"
             sx={{
               ...textStyle,
@@ -324,7 +355,7 @@ const Navbar = () => {
             }}
           />
           <Typography
-            onClick={() => router.push("/contactUs")}
+            onClick={() => router.push("order")}
             variant="h6"
             sx={{
               ...textStyle,
@@ -340,8 +371,6 @@ const Navbar = () => {
             }}
           />
           <Typography
-            onClick={() => router.push("/order")}
-            onMouseEnter={toggleDropdown}
             sx={{
               ...textStyle,
               color: colors.White,
