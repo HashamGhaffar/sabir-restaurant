@@ -1,10 +1,20 @@
+"use client";
 import { Box, Grid, Typography } from "@mui/material";
 import { fonts, colors } from "@/app/utils/themes";
 import webp from "@/_assets/webp";
 import Image from "next/image";
 import Button from "@/_components/Button";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function SignatureFlavours() {
+  // Animation
+  useEffect(() => {
+    AOS.init({ duration: 10000, once: true });
+    AOS.refresh();
+  }, []);
+
   const items = [
     { image: webp.SignatureBurger1, text: "Cheese Burger" },
     { image: webp.SignatureBurger2, text: "Regular Burger" },
@@ -42,6 +52,8 @@ export default function SignatureFlavours() {
         }}
       >
         <Typography
+          data-aos="fade-left"
+          data-aos-duration="1000"
           sx={{
             ...headingStyles,
             color: colors.secondaryYellow,
@@ -50,6 +62,8 @@ export default function SignatureFlavours() {
           Signature Flavors
         </Typography>
         <Typography
+          data-aos="fade-right"
+          data-aos-duration="1000"
           sx={{
             ...headingStyles,
             color: colors.primaryRed,
@@ -64,7 +78,13 @@ export default function SignatureFlavours() {
             paddingTop: { xs: "40px", md: "60px", lg: "80px" },
           }}
         >
-          <Grid sx={{ maxWidth: "1600px" }} container spacing={2}>
+          <Grid
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+            sx={{ maxWidth: "1600px" }}
+            container
+            spacing={2}
+          >
             {items.map((item, index) => (
               <Grid item xs={12} sm={6} xl={3} key={index}>
                 <Box>
@@ -103,6 +123,8 @@ export default function SignatureFlavours() {
         </Box>
         <Box
           sx={{ marginTop: { xs: "20px", sm: "40px", md: "60px", xl: "80px" } }}
+          data-aos="zoom-out"
+          data-aos-duration="1000"
         >
           <Button
             styles={{ backgroundColor: colors.primaryRed, color: colors.White }}

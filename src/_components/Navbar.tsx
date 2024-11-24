@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Image from "next/image";
@@ -8,7 +8,6 @@ import { useRouter } from "next/navigation";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { Divider } from "@mui/material";
 import { colors, fonts } from "@/app/utils/themes";
-
 const Navbar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const router = useRouter();
@@ -25,7 +24,6 @@ const Navbar = () => {
   const closeDropdown = () => {
     setOpen(false);
   };
-
   const textStyle = {
     fontSize: fonts.tertiaryTypography,
     fontWeight: "400",
@@ -58,6 +56,8 @@ const Navbar = () => {
             lg: "20px 80px",
             xl: "25px 120px",
           },
+          position: "relative",
+          zIndex: "1000",
         }}
       >
         {/* maxwidth container  */}
@@ -111,7 +111,12 @@ const Navbar = () => {
             >
               Our Food
             </Typography>
-            <Typography sx={{ ...textStyle }}>contact us</Typography>
+            <Typography
+              onClick={() => router.push("contact-us")}
+              sx={{ ...textStyle }}
+            >
+              contact us
+            </Typography>
             {/* order dropdown  */}
             <Box
               onMouseLeave={closeDropdown}
@@ -295,7 +300,7 @@ const Navbar = () => {
           sx={{
             display: "flex",
             flexDirection: "column",
-            padding: "20px",
+            padding: { xs: "20px", sm: "20px 30px" },
             gap: "10px",
             alignItems: "flex-end",
           }}
@@ -371,6 +376,7 @@ const Navbar = () => {
             }}
           />
           <Typography
+            onClick={() => router.push("contact-us")}
             sx={{
               ...textStyle,
               color: colors.White,

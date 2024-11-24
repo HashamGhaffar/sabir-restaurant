@@ -1,10 +1,18 @@
 "use client";
-
 import MapComponent from "@/_components/Map";
 import { colors, fonts } from "@/app/utils/themes";
 import { Box, Button, Typography } from "@mui/material";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function Location() {
+  // Animation
+  useEffect(() => {
+    AOS.init({ duration: 10000, once: true });
+    AOS.refresh();
+  }, []);
+
   const headingStyles = {
     fontSize: fonts.headingSecondary,
     lineHeight: fonts.headingSecondary,
@@ -28,6 +36,8 @@ export default function Location() {
     >
       {/* hedding  */}
       <Typography
+        data-aos="fade-left"
+        data-aos-duration="1000"
         sx={{
           ...headingStyles,
           color: colors.secondaryYellow,
@@ -36,6 +46,8 @@ export default function Location() {
         Come Find Your
       </Typography>
       <Typography
+        data-aos="fade-right"
+        data-aos-duration="1000"
         sx={{
           ...headingStyles,
           color: colors.White,
@@ -103,6 +115,8 @@ const LocationCard: React.FC<CardProps> = ({ address, number, lat, lng }) => {
   };
   return (
     <Box
+      data-aos="zoom-in"
+      data-aos-duration="1000"
       sx={{
         maxWidth: {
           xl: "530px",

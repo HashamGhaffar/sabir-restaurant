@@ -3,8 +3,17 @@ import { Box, Typography, Grid } from "@mui/material";
 import Button from "@/_components/Button";
 import MapComponent from "@/_components/Map";
 import { fonts, colors } from "@/app/utils/themes";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function Orderbody() {
+  // Animation
+  useEffect(() => {
+    AOS.init({ duration: 10000, once: true });
+    AOS.refresh();
+  }, []);
+
   const headingStyles = {
     fontSize: fonts.headingSecondary,
     lineHeight: fonts.headingSecondary,
@@ -25,6 +34,8 @@ export default function Orderbody() {
         }}
       >
         <Typography
+          data-aos="fade-left"
+          data-aos-duration="1000"
           sx={{
             ...headingStyles,
             color: colors.primaryRed,
@@ -33,6 +44,8 @@ export default function Orderbody() {
           Order Now
         </Typography>
         <Typography
+          data-aos="fade-right"
+          data-aos-duration="1000"
           sx={{
             ...headingStyles,
             color: colors.secondaryYellow,
@@ -73,6 +86,8 @@ interface LocationCardProps {
 function LocationCard({ address, phoneNumber }: LocationCardProps) {
   return (
     <Grid
+      data-aos="zoom-in-up"
+      data-aos-duration="1000"
       item
       xs={12}
       lg={5}

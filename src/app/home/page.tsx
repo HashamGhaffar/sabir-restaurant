@@ -10,7 +10,7 @@ import Location from "./_sections/Location";
 export default function HomePage() {
   return (
     <Box>
-      <Navbar />
+      {/* <Navbar /> */}
       <HeroHome />
       <Marquee />
       <SmashBurger />

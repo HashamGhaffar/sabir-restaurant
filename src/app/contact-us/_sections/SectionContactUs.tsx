@@ -1,11 +1,20 @@
+"use client";
 import { Box, Divider, Typography } from "@mui/material";
 import StandardInput from "../../../_components/Input";
 import Image from "next/image";
 import svgs from "@/_assets/svgs";
 import { colors, fonts } from "@/app/utils/themes";
 import Button from "@/_components/Button";
-// import pngs from "@/_assets/pngs";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 export default function SectionContactUs() {
+  // Animation
+  useEffect(() => {
+    AOS.init({ duration: 10000, once: true });
+    AOS.refresh();
+  }, []);
+
   const headingStyles = {
     fontSize: fonts.headingSecondary,
     lineHeight: fonts.headingSecondary,
@@ -26,6 +35,8 @@ export default function SectionContactUs() {
         }}
       >
         <Typography
+          data-aos="fade-left"
+          data-aos-duration="1000"
           sx={{
             ...headingStyles,
             color: colors.primaryRed,
@@ -34,6 +45,8 @@ export default function SectionContactUs() {
           Reach Out for
         </Typography>
         <Typography
+          data-aos="fade-right"
+          data-aos-duration="1000"
           sx={{
             ...headingStyles,
             color: colors.secondaryYellow,
@@ -58,6 +71,8 @@ export default function SectionContactUs() {
             }}
           >
             <Box
+              data-aos="fade-up-right"
+              data-aos-duration="1000"
               sx={{
                 display: "flex",
                 flexDirection: "column",
@@ -134,6 +149,8 @@ export default function SectionContactUs() {
               </Box>
             </Box>
             <Box
+              data-aos="fade-up-left"
+              data-aos-duration="1000"
               sx={{
                 maxWidth: { xs: "100%", lg: "550px" },
                 minWidth: { lg: "480px" },
@@ -151,7 +168,6 @@ export default function SectionContactUs() {
 export function CardContactUs() {
   const contactCardText = {
     fontSize: fonts.tertiaryTypography,
-    // lineHeight: fonts.tertiaryTypography,
     color: colors.White,
   };
 

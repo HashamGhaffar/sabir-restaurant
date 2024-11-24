@@ -7,8 +7,17 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import NextMealSlider from "./NextMealSlider";
 import { CustomLeftArrow, CustomRightArrow } from "./CustomArrows";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function NextMeal() {
+  // Animation
+  useEffect(() => {
+    AOS.init({ duration: 10000, once: true });
+    AOS.refresh();
+  }, []);
+
   const settings = {
     dots: false,
     infinite: true,
@@ -56,7 +65,11 @@ export default function NextMeal() {
           flexDirection: { xs: "column", md: "row" },
         }}
       >
-        <Box sx={{ maxWidth: "500px" }}>
+        <Box
+          data-aos="fade-right"
+          data-aos-duration="1500"
+          sx={{ maxWidth: "500px" }}
+        >
           <Typography sx={{ ...headingStyles, color: colors.secondaryYellow }}>
             Come Find Your
           </Typography>
@@ -89,7 +102,11 @@ export default function NextMeal() {
           </Box>
         </Box>
         {/* Slider with cards */}
-        <Box sx={{ position: "relative" }}>
+        <Box
+          data-aos="zoom-in"
+          data-aos-duration="1000"
+          sx={{ position: "relative" }}
+        >
           <Box
             sx={{
               height: { xs: "370px", sm: "370px", lg: "450px" },

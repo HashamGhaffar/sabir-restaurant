@@ -4,7 +4,6 @@ import { fonts, colors } from "@/app/utils/themes";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-// import { useEffect, useState } from "react";
 
 interface FooterProps {
   applyBorderTop?: boolean;
@@ -162,7 +161,12 @@ const Footer = ({ applyBorderTop = true }: FooterProps) => {
                   >
                     Order
                   </Typography>
-                  <Typography sx={{ ...textStyles }}>Contact</Typography>
+                  <Typography
+                    onClick={() => router.push("contact-us")}
+                    sx={{ ...textStyles }}
+                  >
+                    Contact
+                  </Typography>
                 </Box>
               </Box>
               <Box

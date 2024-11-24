@@ -1,8 +1,18 @@
+"use client";
 import { Box, Typography } from "@mui/material";
 import { fonts, colors } from "@/app/utils/themes";
 import NextMeal from "../_components/NextMeal";
 import Button from "@/_components/Button";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 export default function SmashBurger() {
+  // Animation
+  useEffect(() => {
+    AOS.init({ duration: 10000, once: true });
+    AOS.refresh();
+  }, []);
+
   const headingStyles = {
     fontSize: fonts.headingSecondary,
     lineHeight: fonts.headingSecondary,
@@ -36,6 +46,8 @@ export default function SmashBurger() {
         }}
       >
         <Box
+          data-aos="zoom-in-up"
+          data-aos-duration="1000"
           sx={{
             maxWidth: "800px",
             backgroundColor: "#000000CC",

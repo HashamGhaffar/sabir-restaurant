@@ -1,9 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import webp from "@/_assets/webp";
 import { fonts, colors } from "@/app/utils/themes";
 import { Box, Grid, Typography } from "@mui/material";
 import Image, { StaticImageData } from "next/image";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function OurBio() {
   const bioSections = [
@@ -66,12 +69,18 @@ export function OurBioSection({
     fontFamily: '"Bebas Neue", sans-serif',
   };
 
+  // Animation
+  useEffect(() => {
+    AOS.init({ duration: 10000, once: true });
+    AOS.refresh();
+  }, []);
+
   return (
     <Grid
       sx={{ flexDirection: reverseOrder ? "row-reverse" : "row" }}
       container
     >
-      <Grid item xs={12} md={6}>
+      <Grid data-aos="fade-right" data-aos-duration="1000" item xs={12} md={6}>
         <Box sx={{ height: "100%", width: "100%" }}>
           <Image
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
@@ -81,6 +90,8 @@ export function OurBioSection({
         </Box>
       </Grid>
       <Grid
+        data-aos="fade-left"
+        data-aos-duration="1000"
         sx={{
           display: "flex",
           alignItems: "center",
